@@ -119,8 +119,38 @@ const renderPlayerInfo = async function (playerNumber, lookingPlayer) {
 };
 
 renderPlayerInfo(6, 8);
-// renderPlayerInfo(6, 8);
+renderPlayerInfo(6, 8);
 // renderPlayerInfo(6, 8);
 // renderPlayerInfo(67, 8);
 // renderPlayerInfo(69, 8);
 // renderPlayerInfo(37, 8);
+
+// html element
+const inputGuess = document.querySelector(".input-guess");
+const lookingPlayerContainer = document.querySelector(".looking-Player");
+const searchPlayerCard = document.querySelector("[search-player-card]");
+console.log(searchPlayerCard);
+
+inputGuess.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const playersToHtml = [];
+
+  players.data.forEach((p) => {
+    if (
+      p.player.name.toLowerCase().includes(value) ||
+      p.statistics[0].team.name.toLowerCase().includes(value)
+    ) {
+      const card = searchPlayerCard.content.cloneNode(true).children[0];
+      const name = card.querySelector(".search-name");
+      const team = card.querySelector(".search-team");
+      name.textContent = p.player.name;
+      team.style.backgroundImage = `url(${p.statistics[0].team.logo})`;
+      playersToHtml.push(card);
+    }
+  });
+  for (let card = 0; card < 10; card++) {
+    lookingPlayerContainer.append(playersToHtml[card]);
+  }
+});
+
+console.log(inputGuess);

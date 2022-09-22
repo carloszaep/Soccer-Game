@@ -3,11 +3,12 @@ body {
   font-family: "Secular One", sans-serif;
   background-color: #31087b;
 }
-/* player to gest */
+/* player to guess */
 
 .looking-Player,
 .player-container,
 .looking-info {
+  margin: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,16 +28,36 @@ body {
   font-size: 2.5rem;
   color: #eae509;
 }
-
-.input-guest {
-  margin: 2% 0;
+/* input filed */
+.input-guess {
   width: 30%;
   padding: 10px;
   border-radius: 10px;
   border: none;
   text-align: center;
-
+  font-size: 2rem;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.9);
+}
+.search-box {
+  width: 30%;
+  padding: 10px;
+  background-color: aliceblue;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.search-team {
+  width: 30px;
+  height: 30px;
+  /* background-image: url("https://media.api-sports.io/football/teams/530.png"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
 }
 
 .blur {
@@ -44,7 +65,7 @@ body {
   filter: blur(6px);
 }
 
-/* players that have been gest   */
+/* players that have been guessed   */
 
 .player {
   color: rgb(42, 42, 42);
