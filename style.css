@@ -14,6 +14,13 @@ body {
   align-items: center;
   justify-content: center;
 }
+.search-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .looking-img {
   width: 150px;
@@ -38,19 +45,20 @@ body {
   font-size: 2rem;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.9);
 }
-.search-box {
-  width: 30%;
+.search-card {
+  width: 100%;
   padding: 10px;
   background-color: aliceblue;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 .search-team {
   width: 30px;
   height: 30px;
-  /* background-image: url("https://media.api-sports.io/football/teams/530.png"); */
+  background-image: url("https://media.api-sports.io/football/teams/530.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

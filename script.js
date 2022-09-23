@@ -115,42 +115,61 @@ const renderPlayerInfo = async function (playerNumber, lookingPlayer) {
     </div>
   </div>`;
   // append to the document
-  playerContainer.insertAdjacentHTML("beforeend", html);
+  playerContainer.insertAdjacentHTML("afterend", html);
 };
 
-renderPlayerInfo(6, 8);
-renderPlayerInfo(6, 8);
-// renderPlayerInfo(6, 8);
-// renderPlayerInfo(67, 8);
-// renderPlayerInfo(69, 8);
-// renderPlayerInfo(37, 8);
+let findPlayer = 5;
 
 // html element
 const inputGuess = document.querySelector(".input-guess");
-const lookingPlayerContainer = document.querySelector(".looking-Player");
-const searchPlayerCard = document.querySelector("[search-player-card]");
-console.log(searchPlayerCard);
+const lookingPlayerContainer = document.querySelector(".search-container");
 
 inputGuess.addEventListener("input", (e) => {
+  lookingPlayerContainer.innerHTML = "";
   const value = e.target.value.toLowerCase();
   const playersToHtml = [];
 
-  players.data.forEach((p) => {
+  players.data.forEach((p, index) => {
     if (
       p.player.name.toLowerCase().includes(value) ||
-      p.statistics[0].team.name.toLowerCase().includes(value)
+      p.statistics[0].team.name.toLowerCase().includes(value) ||
+      p.player.firstname.toLowerCase().includes(value) ||
+      p.player.lastname.toLowerCase().includes(value)
     ) {
-      const card = searchPlayerCard.content.cloneNode(true).children[0];
-      const name = card.querySelector(".search-name");
-      const team = card.querySelector(".search-team");
-      name.textContent = p.player.name;
-      team.style.backgroundImage = `url(${p.statistics[0].team.logo})`;
-      playersToHtml.push(card);
+      const playerRender = {
+        playerNumber: index,
+        html: `<div class="search-card">
+      <span class="search-name">${p.player.name}</span>
+      <div class="search-team" style="background-image: url(${p.statistics[0].team.logo});"></div>
+    </div>`,
+      };
+
+      playersToHtml.push(playerRender);
     }
   });
-  for (let card = 0; card < 10; card++) {
-    lookingPlayerContainer.append(playersToHtml[card]);
-  }
-});
 
-console.log(inputGuess);
+  if (playersToHtml.length > 20) {
+    for (let card = 0; card < 19; card++) {
+      lookingPlayerContainer.insertAdjacentHTML(
+        "beforeend",
+        playersToHtml[card].html
+      );
+    }
+  } else {
+    for (let c of playersToHtml) {
+      lookingPlayerContainer.insertAdjacentHTML("beforeend", c.html);
+    }
+  }
+
+  // when click render player
+  const card = document.querySelectorAll(".search-card");
+  card.forEach((element, index) => {
+    element.addEventListener("click", function () {
+      renderPlayerInfo(playersToHtml[index].playerNumber, findPlayer);
+      lookingPlayerContainer.innerHTML = "";
+      e.target.value = "";
+    });
+  });
+
+  if (!value) lookingPlayerContainer.innerHTML = "";
+});
