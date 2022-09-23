@@ -5,14 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script type="module" defer src="script.js"></script>
+    <script defer type="module" src="script.js"></script>
     <title>Soccer</title>
   </head>
   <body>
     <div class="looking-Player">
       <div class="looking-info">
-        <div class="looking-img"></div>
-        <h2 class="looking-name">Angel DI maria</h2>
+        <div class="looking-img blur"></div>
+        <h2 class="looking-name"></h2>
+
+        <!-- player card -->
+        <div class="player" id="player-toFind">
+          <div class="player-age">
+            <div class="age">Age</div>
+            <div class="age-logo incorrect" id="player-toFind-age"></div>
+          </div>
+          <div class="player-pos">
+            <div class="pos-text">Position</div>
+            <div class="pos-logo incorrect" id="player-toFind-pos"></div>
+          </div>
+          <div class="player-nationality">
+            <div class="country">Nationality</div>
+            <div class="incorrect country-flag" id="player-toFind-nat"></div>
+          </div>
+          <div class="player-team">
+            <div class="team-text">Team</div>
+            <div class="team-logo incorrect" id="player-toFind-team"></div>
+          </div>
+          <div class="player-league">
+            <div class="league-text">League</div>
+            <div class="league-logo incorrect" id="player-toFind-league"></div>
+          </div>
+        </div>
       </div>
 
       <input class="input-guess" type="text" placeholder="GUESS 1-10" />
@@ -20,23 +44,9 @@
         <!-- <div class="search-card">
           <span class="search-name">cararfdfdfdfs</span>
           <div class="search-team"></div> -->
-        </div>
-        <!-- <div class="search-card">
-          <span class="search-name">cararfdfdfdfs</span>
-          <div class="search-team"></div>
-        </div>
-        <div class="search-card">
-          <span class="search-name">cararfdfdfdfs</span>
-          <div class="search-team"></div>
-        </div> -->
       </div>
-      <!-- <template search-player-card>
-        <div class="search-card">
-          <span class="search-name"></span>
-          <div class="search-team"></div>
-        </div>
-      </template> -->
     </div>
+
     <div class="player-container">
       <!-- <div class="player">
         <div class="player-id">

@@ -16,6 +16,7 @@ body {
 }
 .search-container {
   width: 30%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,7 +84,11 @@ body {
   grid-auto-rows: minmax(150px, auto);
   background-color: aliceblue;
   margin: 2px auto;
-  border-radius: 15% 0;
+  border-radius: 10px;
+}
+
+#player-toFind {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* players stats */

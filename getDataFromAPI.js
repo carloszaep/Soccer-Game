@@ -7,13 +7,13 @@ const wait = function (seconds) {
 const optionsAPI = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "1d487bff49mshd1ab32afeb476dcp1b600cjsn9d3dfffe175b",
+    "X-RapidAPI-Key": "a2000e2b58msh40fe7c4f1da394ap19b9f1jsnbfce88cb3f74",
     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
   },
 };
 
 // only change the league number
-let optionToPlayer = { league: 140, season: 2022, page: 1 };
+let optionToPlayer = { league: 61, season: 2022, page: 1 };
 
 const premier = { data: [] };
 
@@ -38,4 +38,4 @@ const getPlayerData = async function () {
   }
 };
 
-// getPlayerData();
+//getPlayerData();
