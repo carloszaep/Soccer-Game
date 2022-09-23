@@ -7,8 +7,7 @@ const wait = function (seconds) {
 const optionsAPI = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "a2000e2b58msh40fe7c4f1da394ap19b9f1jsnbfce88cb3f74",
-    "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+
   },
 };
 
