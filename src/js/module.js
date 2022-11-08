@@ -93,7 +93,6 @@ export const checkForWinOrLose = function () {
   const win = state.game.guessedPlayer.some((p) => {
     return p.playerGuessed.id === state.game.playerToFind.id;
   });
-  console.log(win);
 
   if (win && state.game.guesses < numberOfGuesses) {
     if (win && state.game.guesses === 1) {

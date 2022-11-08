@@ -45,7 +45,6 @@ const controlLegalYear = function () {
 };
 
 const controlRestart = function () {
-  playerToFindImgView.renderSpinner();
   module.getRandomPlayerToFind();
   module.restartGame();
   initGame();
