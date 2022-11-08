@@ -1,0 +1,27 @@
+{
+  "name": "soccer-game",
+  "version": "1.0.0",
+  "description": "guess who who is the player",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carloszaep/Soccer-Game.git"
+  },
+  "author": "Carlos Paez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carloszaep/Soccer-Game/issues"
+  },
+  "homepage": "https://github.com/carloszaep/Soccer-Game#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "core-js": "^3.25.3",
+    "regenerator-runtime": "^0.13.9"
+  }
+}

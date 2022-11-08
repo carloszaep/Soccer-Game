@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  max-width: 70vw;
+  min-height: 90vh;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+  border-radius: 5px;
+
+  @include respond(tab-port) {
+    max-width: 100%;
+
+    margin: 0;
+  }
+
+  @include respond(phone) {
+    flex-direction: column;
+  }
+}
+
+.header {
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  @include respond(phone) {
+    flex-direction: column;
+  }
+
+  .side-bar {
+    flex: 0 0 30%;
+    background-color: var(--color-grey-dark-1);
+  }
+
+  .content {
+    flex: 1;
+  }
+}
+
+.footer {
+  display: flex;
+  background-color: var(--color-grey-dark-3);
+  justify-content: center;
+  align-items: center;
+}

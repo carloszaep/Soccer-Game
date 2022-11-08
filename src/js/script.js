@@ -73,8 +73,53 @@ const e = await League1Data.json();
 
 const players = [...a.data, ...b.data, ...c.data, ...d.data, ...e.data];
 
+const favoritePlayer = [
+  "benzema",
+  "modirc",
+  "De Bruyne",
+  "cristiano ronaldo",
+  "messi",
+];
+const favoriteTeam = [
+  "real madrid",
+  "barcelona",
+  "atletico de madrid",
+  "sevilla",
+  "atletico de bilbao",
+  "real sociedad",
+  "arsenal",
+  "manchester united",
+  "manchester city",
+  "chelsea",
+  "liverpool",
+  "Tottenham",
+];
+const favoritePlayerIndex = [];
+
+players.forEach((p, index) => {
+  let team = p.statistics[0].team.name.toLowerCase();
+  let playerEach = p.player.name.toLowerCase();
+
+  if (favoriteTeam.some((t) => t.toLowerCase().includes(team))) {
+    favoritePlayerIndex.push(index);
+
+    if (
+      favoritePlayer.some((p) => playerEach.includes(p.toLocaleLowerCase()))
+    ) {
+      for (let time = 0; time < 100; time++) {
+        favoritePlayerIndex.push(index);
+      }
+    }
+  }
+});
+console.log(players[1263]);
+
+console.log(favoritePlayerIndex);
+
 // local variables
-let findPlayer = getRandomNum(0, players.length);
+let findPlayer =
+  favoritePlayerIndex[getRandomNum(0, favoritePlayerIndex.length)];
+
 let guessNumber = 1;
 let playersToHtml = [];
 
@@ -185,7 +230,7 @@ const renderPlayerInfo = async function (playerNumber, lookingPlayer) {
   if (guessNumber <= 10) {
     if (playerNumber === lookingPlayer) {
       lookingImg.classList.remove("blur");
-      lookingName.textContent = playerName;
+      lookingName.textContent = players[lookingPlayer].player.name;
       alert("nice done you get it");
     }
     addRemToFindPlayer(playerAge.equal, playerToFindAge, playerAge.age);
@@ -205,7 +250,7 @@ const renderPlayerInfo = async function (playerNumber, lookingPlayer) {
     );
   } else {
     lookingImg.classList.remove("blur");
-    lookingName.textContent = playerName;
+    lookingName.textContent = players[lookingPlayer].player.name;
     alert("you lose");
   }
 };
@@ -226,6 +271,7 @@ inputGuess.addEventListener("input", (e) => {
       const playerRender = {
         html: `<div class="search-card search-name" data-id="${index}">
       <span class="search-name" data-id="${index}">${p.player.name}</span>
+     
       <div class="search-team" style="background-image: url(${p.statistics[0].team.logo});"></div>
     </div>`,
       };

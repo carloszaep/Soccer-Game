@@ -1,0 +1,59 @@
+.guess-player__guesses-box > *:first-child {
+  animation: monUp 1.4s;
+}
+
+.player-card {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  width: 40rem;
+  max-height: 10rem;
+  border-bottom: var(--line);
+  text-align: center;
+
+  &__stat,
+  &__label {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__stat--box {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    background-color: var(--color-grey-dark-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-dark);
+  }
+
+  &__label--text {
+    display: inline-block;
+  }
+
+  &__name {
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+}
+
+.position,
+.age {
+  font-size: 2rem;
+  color: var(--color-grey-dark-1);
+}
+
+.team,
+.league,
+.nat {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
