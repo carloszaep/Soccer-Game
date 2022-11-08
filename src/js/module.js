@@ -25,7 +25,7 @@ const localStorageData = function (data, dataName) {
   localStorage.setItem(dataName, JSON.stringify(data));
 };
 
-const init = function () {
+export const init = function () {
   const players = localStorage.getItem("players");
   const game = localStorage.getItem("game");
   const favoritesPlayers = localStorage.getItem("favoritesPlayers");

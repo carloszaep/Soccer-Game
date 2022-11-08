@@ -55,6 +55,10 @@ const init = function () {
   handlerEventBtn(controlRestart);
   searchView.handlerEventInput(controlSearchShowResult);
   playersCard.handlerEventClick(controlAddPlayerCard);
+  // get random plyer if there is not
+  if (Object.keys(module.state.game.playerToFind).length === 0) {
+    controlRestart();
+  }
 
   // legal year
   controlLegalYear();
@@ -67,4 +71,5 @@ const initGame = function () {
 };
 
 initGame();
+module.init();
 init();
