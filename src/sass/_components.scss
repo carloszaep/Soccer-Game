@@ -137,6 +137,12 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  &__name {
+    margin-top: 2rem;
+    font-size: 3rem;
+    color: var(--color-primary);
+  }
 }
 
 .search {
@@ -156,6 +162,10 @@
     outline: none;
     border-radius: 10px;
     text-transform: uppercase;
+
+    &:-webkit-autofill {
+      color: inherit;
+    }
   }
 
   &__button {

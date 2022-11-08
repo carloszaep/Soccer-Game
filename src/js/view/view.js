@@ -1,3 +1,5 @@
+import icons from "url:../../img/app-svg.svg";
+
 export default class View {
   _data;
 
@@ -27,9 +29,13 @@ export default class View {
   }
 
   renderSpinner = function () {
+    console.log(icons);
+
     const markup = `  
       <div class="spinner">
-        spinner
+      <svg>
+      <use href="${icons}.svg#icon-loader"></use>
+      </svg>
       </div>`;
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
@@ -39,7 +45,7 @@ export default class View {
     const markup = `
         <div class="error">
           <div>
-            error logo
+            error 
           </div>
           <p>${errorMessage}</p>
         </div> `;
@@ -50,8 +56,7 @@ export default class View {
   renderMessage(message = this._message) {
     const markup = `
         <div class="message">
-          <div>
-            
+          <div>            
           </div>
           <p>${message}</p>
         </div> `;

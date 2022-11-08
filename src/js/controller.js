@@ -23,22 +23,18 @@ const controlAddPlayerCard = async function (id) {
   // render all playerCard and clear input
   playersCard.render(module.state.game.guessedPlayer);
   searchView.clearInput();
-
   // rest a guess from guesses and render in the placeholder
   module.changeGuesses(1);
   changePlaceHolder(module.state.game.guesses);
-
-  // you win for now
-  if (
-    module.state.game.playerToFind.id ===
-    module.state.game.guessedPlayer.at(-1).id
-  ) {
-    alert("you win");
-    controlRestart();
+  // check for win
+  if (module.checkForWinOrLose()) {
+    playerToFindImgView.removePhotoBurAndName();
+    searchView.hiddenInputBox();
   }
-  if (module.state.game.guesses - 1 === numberOfGuesses) {
-    alert("you lose");
-    controlRestart();
+  // check for lose
+  if (module.state.game.guesses >= numberOfGuesses) {
+    playerToFindImgView.removePhotoBurAndName();
+    searchView.hiddenInputBox();
   }
 };
 
@@ -49,6 +45,7 @@ const controlLegalYear = function () {
 };
 
 const controlRestart = function () {
+  playerToFindImgView.renderSpinner();
   module.getRandomPlayerToFind();
   module.restartGame();
   initGame();

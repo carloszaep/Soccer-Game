@@ -11,6 +11,11 @@ class searchView extends View {
     this._inputSearch.value = "";
   }
 
+  hiddenInputBox() {
+    const inputBox = document.querySelector(".search");
+    inputBox.classList.toggle("hidden");
+  }
+
   handlerEventInput(handler) {
     this._inputSearch.addEventListener("input", function () {
       const value = this.value.toLowerCase();

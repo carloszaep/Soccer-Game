@@ -6229,20 +6229,7 @@
     "leagueLogo": "https://media.api-sports.io/football/leagues/39.png",
     "position": "Attacker"
   },
-  {
-    "id": 662,
-    "name": "T. Ndombélé",
-    "firstname": "Tanguy",
-    "lastname": "Ndombélé Alvaro",
-    "age": 26,
-    "country": "France",
-    "photo": "https://media.api-sports.io/football/players/662.png",
-    "team": "Tottenham",
-    "teamLogo": "https://media.api-sports.io/football/teams/47.png",
-    "league": "Premier League",
-    "leagueLogo": "https://media.api-sports.io/football/leagues/39.png",
-    "position": "Midfielder"
-  },
+
   {
     "id": 1117,
     "name": "K. Tierney",
@@ -8735,20 +8722,7 @@
     "leagueLogo": "https://media.api-sports.io/football/leagues/39.png",
     "position": "Midfielder"
   },
-  {
-    "id": 1166,
-    "name": "T. Werner",
-    "firstname": "Timo",
-    "lastname": "Werner",
-    "age": 26,
-    "country": "Germany",
-    "photo": "https://media.api-sports.io/football/players/1166.png",
-    "team": "Chelsea",
-    "teamLogo": "https://media.api-sports.io/football/teams/49.png",
-    "league": "Premier League",
-    "leagueLogo": "https://media.api-sports.io/football/leagues/39.png",
-    "position": "Attacker"
-  },
+
   {
     "id": 2729,
     "name": "J. Andersen",
@@ -18815,20 +18789,7 @@
     "leagueLogo": "https://media.api-sports.io/football/leagues/140.png",
     "position": "Defender"
   },
-  {
-    "id": 747,
-    "name": "Casemiro",
-    "firstname": "Carlos Henrique",
-    "lastname": "Casimiro",
-    "age": 30,
-    "country": "Brazil",
-    "photo": "https://media.api-sports.io/football/players/747.png",
-    "team": "Real Madrid",
-    "teamLogo": "https://media.api-sports.io/football/teams/541.png",
-    "league": "La Liga",
-    "leagueLogo": "https://media.api-sports.io/football/leagues/140.png",
-    "position": "Midfielder"
-  },
+
   {
     "id": 762,
     "name": "Vinícius Júnior",

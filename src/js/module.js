@@ -1,11 +1,7 @@
 import { async } from "regenerator-runtime";
 import { numberOfSearch } from "./config";
-import {
-  checkForPlayerInput,
-  randomNumber,
-  getCountryFlags,
-  checkForPlayerStartWith,
-} from "./utility";
+import { checkForPlayerInput, randomNumber, getCountryFlags } from "./utility";
+import { numberOfGuesses } from "./config";
 
 // this import is because i dont have a API yet had to use data from json module
 import data from "../data/data.json";
@@ -15,6 +11,13 @@ export const state = {
   players: {},
   game: { guessedPlayer: [], guesses: 1, playerToFind: {} },
   favoritesPlayers: [],
+  localUserGameData: {
+    attempts: 1,
+    success: 0,
+    superHit: 0,
+    average: 0,
+    losses: 0,
+  },
 };
 
 //  is because i dont have a API yet had to use data from json module
@@ -26,6 +29,7 @@ const init = function () {
   const players = localStorage.getItem("players");
   const game = localStorage.getItem("game");
   const favoritesPlayers = localStorage.getItem("favoritesPlayers");
+  const localUserGameData = localStorage.getItem("localUserGameData");
 
   if (game) {
     state.game = JSON.parse(game);
@@ -33,6 +37,10 @@ const init = function () {
   if (favoritesPlayers) {
     state.favoritesPlayers = JSON.parse(favoritesPlayers);
   } else localStorageData(dataFavoritesPlayers, "favoritesPlayers");
+
+  if (localUserGameData) {
+    state.localUserGameData = JSON.parse(localUserGameData);
+  }
 
   if (players) {
     state.players = JSON.parse(players);
@@ -81,6 +89,40 @@ export const addPlayerToGuessed = async function (id) {
   localStorageData(state.game, "game");
 };
 
+export const checkForWinOrLose = function () {
+  const win = state.game.guessedPlayer.some((p) => {
+    return p.playerGuessed.id === state.game.playerToFind.id;
+  });
+  console.log(win);
+
+  if (win && state.game.guesses < numberOfGuesses) {
+    if (win && state.game.guesses === 1) {
+      state.localUserGameData.superHit += 1;
+    }
+    state.localUserGameData.success += 1;
+    state.localUserGameData.attempts += 1;
+    state.localUserGameData.average =
+      (state.localUserGameData.success / state.localUserGameData.attempts) *
+      100;
+    state.game.guessedPlayer = [];
+    localStorageData(state.game, "game");
+  }
+
+  if (!win && state.game.guesses >= numberOfGuesses) {
+    state.localUserGameData.losses += 1;
+    state.localUserGameData.attempts += 1;
+    state.game.guessedPlayer = [];
+    state.localUserGameData.average =
+      (state.localUserGameData.success / state.localUserGameData.attempts) *
+      100;
+    localStorageData(state.game, "game");
+  }
+
+  localStorageData(state.localUserGameData, "localUserGameData");
+
+  return win;
+};
+
 export const changeGuesses = function (nGuesses) {
   state.game.guesses += nGuesses;
   localStorageData(state.game, "game");
@@ -95,20 +137,11 @@ export const restartGame = function () {
 export const getRandomPlayerToFind = function () {
   // get a random index from favorites player
   const randomIndex = randomNumber(0, state.favoritesPlayers.length - 1);
-  // get player to find name from favorites plyers
-  const playerTofName = state.favoritesPlayers[randomIndex]
-    .toLowerCase()
-    .split(" ");
-  // set player to find by same name
-  console.log(playerTofName);
+  // get player to find  from ids favorites plyers
+  const randomPlayerID = state.favoritesPlayers[randomIndex];
 
-  let a = state.players.find((player) => {
-    return checkForPlayerStartWith(
-      player.firstname,
-      randomIndex[0].replace(/\p{Diacritic}/gu, "")
-    );
-  });
-  console.log(a);
+  // set player to find by same name
+  state.game.playerToFind = state.players.find((p) => p.id === randomPlayerID);
 
   localStorageData(state.game, "game");
 };
