@@ -5,6 +5,13 @@ export const checkForPlayerInput = function (stringInfo, value) {
     .replace(/\p{Diacritic}/gu, "")
     .includes(value);
 };
+export const checkForPlayerStartWith = function (stringInfo, value) {
+  return stringInfo
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .startsWith(value);
+};
 
 export const getPos = function (pos) {
   if (pos === "Defender") return "DF";
