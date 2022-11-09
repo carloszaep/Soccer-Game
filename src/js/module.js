@@ -67,7 +67,7 @@ export const getPlayersForSearch = function (value) {
   return matchingPlayer;
 };
 
-export const addPlayerToGuessed = async function (id) {
+export const addPlayerToGuessed = function (id) {
   const playerGuessed = state.players.find((p) => p.id === id);
   const areTheSame = {
     team: state.game.playerToFind.team === playerGuessed.team ? true : false,
@@ -82,7 +82,7 @@ export const addPlayerToGuessed = async function (id) {
         : false,
   };
 
-  playerGuessed.countryFlag = await getCountryFlags(playerGuessed.country);
+  playerGuessed.countryFlag = getCountryFlags(playerGuessed.country);
 
   state.game.guessedPlayer.push({ playerGuessed, areTheSame });
 

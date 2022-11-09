@@ -17,9 +17,9 @@ const controlSearchShowResult = function (value) {
   if (!value) searchView.clearInput();
 };
 
-const controlAddPlayerCard = async function (id) {
+const controlAddPlayerCard = function (id) {
   // add search player to players guessed
-  await module.addPlayerToGuessed(id);
+  module.addPlayerToGuessed(id);
   // render all playerCard and clear input
   playersCard.render(module.state.game.guessedPlayer);
   searchView.clearInput();

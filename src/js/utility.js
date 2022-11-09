@@ -24,12 +24,6 @@ export const randomNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-export const getCountryFlags = async function (country) {
-  try {
-    const flags = await fetch(`https://countryflagsapi.com/png/${country}`);
-    if (!flags) throw new Error("No Flag");
-    return flags.url;
-  } catch (err) {
-    throw new Error(err);
-  }
+export const getCountryFlags = function (country) {
+  return `https://countryflagsapi.com/png/${country}`;
 };
