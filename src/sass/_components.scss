@@ -65,15 +65,12 @@
 .bar {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  flex-direction: row;
+  justify-content: space-evenly;
+
   align-items: center;
   font-size: 1.4rem;
-
-  @include respond(phone) {
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
 
   &__item {
     padding: 1rem;
@@ -92,6 +89,46 @@
 
     &:focus {
       outline: 1px solid var(--color-primary);
+    }
+  }
+}
+
+.bar-content {
+  font-size: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 30%;
+  background-color: var(--color-grey-dark-2);
+  color: var(--color-grey-light-1);
+
+  &__stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+
+  &__rule {
+    text-align: left;
+    line-height: 3.5rem;
+  }
+
+  &__config {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    &__colors,
+    &__mode {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-inputs {
+      border: none;
     }
   }
 }
