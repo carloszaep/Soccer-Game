@@ -5,12 +5,17 @@ class playerToFindImgView extends View {
 
   _message = "No Photo";
 
-  removePhotoBurAndName() {
+  removeTotalBlur() {
     const photo = this._parentElement.querySelector(".guess-player__img");
     const name = this._parentElement.querySelector(".guess-player__name");
 
     name.classList.toggle("hidden");
     photo.style.filter = "none";
+  }
+
+  removeBlurImg(value) {
+    const photo = this._parentElement.querySelector(".guess-player__img");
+    photo.style.filter = `blur(${value}px)`;
   }
 
   _generateMarkup() {

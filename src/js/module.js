@@ -17,6 +17,12 @@ export const state = {
     superHit: 0,
     average: 0,
     losses: 0,
+    modeNormal: true,
+    modeDark: false,
+    modeBlack: false,
+    colorPurple: true,
+    colorBlue: false,
+    colorGreen: false,
   },
 };
 
@@ -89,31 +95,63 @@ export const addPlayerToGuessed = function (id) {
   localStorageData(state.game, "game");
 };
 
-export const checkForWinOrLose = function () {
+export const changeColors = function (color) {
+  state.localUserGameData.colorBlue = false;
+  state.localUserGameData.colorPurple = false;
+  state.localUserGameData.colorGreen = false;
+  if (color === "blue-color") {
+    state.localUserGameData.colorBlue = true;
+  }
+  if (color === "green-color") {
+    state.localUserGameData.colorGreen = true;
+  }
+  if (color === "purple-color") {
+    state.localUserGameData.colorPurple = true;
+  }
+  localStorageData(state.localUserGameData, "localUserGameData");
+};
+export const changeMode = function (color) {
+  state.localUserGameData.modeNormal = false;
+  state.localUserGameData.modeBlack = false;
+  state.localUserGameData.modeDark = false;
+  if (color === "normal-mode") {
+    state.localUserGameData.modeNormal = true;
+  }
+  if (color === "dark-mode") {
+    state.localUserGameData.modeDark = true;
+  }
+  if (color === "black-mode") {
+    state.localUserGameData.modeBlack = true;
+  }
+  localStorageData(state.localUserGameData, "localUserGameData");
+};
+
+export const checkForWinOrLose = function (btnNewGame) {
   const win = state.game.guessedPlayer.some((p) => {
     return p.playerGuessed.id === state.game.playerToFind.id;
   });
 
   if (win && state.game.guesses < numberOfGuesses) {
-    if (win && state.game.guesses === 1) {
+    if (state.game.guesses === 2) {
       state.localUserGameData.superHit += 1;
     }
     state.localUserGameData.success += 1;
-    state.localUserGameData.attempts += 1;
-    state.localUserGameData.average =
+    state.localUserGameData.average = (
       (state.localUserGameData.success / state.localUserGameData.attempts) *
-      100;
+      100
+    ).toFixed(2);
     state.game.guessedPlayer = [];
     localStorageData(state.game, "game");
   }
 
-  if (!win && state.game.guesses >= numberOfGuesses) {
+  if ((!win && state.game.guesses >= numberOfGuesses) || btnNewGame) {
     state.localUserGameData.losses += 1;
     state.localUserGameData.attempts += 1;
     state.game.guessedPlayer = [];
-    state.localUserGameData.average =
+    state.localUserGameData.average = (
       (state.localUserGameData.success / state.localUserGameData.attempts) *
-      100;
+      100
+    ).toFixed(2);
     localStorageData(state.game, "game");
   }
 

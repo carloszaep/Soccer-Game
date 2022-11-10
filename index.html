@@ -36,123 +36,22 @@
       <main class="main">
         <div class="side-bar">
           <ul class="bar">
-            <li class="bar__item"><a href="#" class="bar__link">Game</a></li>
-            <li class="bar__item"><a href="#" class="bar__link">Stats</a></li>
-            <li class="bar__item"><a href="#" class="bar__link">Rule</a></li>
             <li class="bar__item">
-              <a href="#" class="bar__link">Config</a>
+              <a href="#" class="bar__link" data-link="stats">Stats</a>
+            </li>
+            <li class="bar__item">
+              <a href="#" class="bar__link" data-link="rule">Rule</a>
+            </li>
+            <li class="bar__item">
+              <a href="#" class="bar__link" data-link="config">Config</a>
             </li>
           </ul>
         </div>
-        <div class="bar-content">
-          <h2 class="bar-content__text">Config</h2>
-          <div class="bar-content__config">
-            <div class="bar-content__config__mode">
-              <h3>Mode</h3>
-              <fieldset class="bar-content__config-inputs">
-                <div>
-                  <input
-                    type="radio"
-                    id="normal-mode"
-                    name="mode-input"
-                    value="normal-mode"
-                    checked
-                  />
-                  <label for="normal-mode">Normal</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    id="hard-mode"
-                    name="mode-input"
-                    value="hard-mode"
-                  />
-                  <label for="hard-mode">Hard</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    id="super-mode"
-                    name="mode-input"
-                    value="super-mode"
-                  />
-                  <label for="super-mode">Super</label>
-                </div>
-              </fieldset>
-            </div>
-            <div class="bar-content__config__colors">
-              <h3>Colors</h3>
-
-              <fieldset class="bar-content__config-inputs">
-                <div>
-                  <input
-                    type="radio"
-                    id="purple-color"
-                    name="color-input"
-                    value="purple-color"
-                    checked
-                  />
-                  <label for="purple-color">Purple</label>
-                </div>
-
-                <div>
-                  <input
-                    type="radio"
-                    id="blue-color"
-                    name="color-input"
-                    value="blue-color"
-                  />
-                  <label for="blue-color">Blue</label>
-                </div>
-
-                <div>
-                  <input
-                    type="radio"
-                    id="green-color"
-                    name="color-input"
-                    value="green-color"
-                  />
-                  <label for="green-color">Green</label>
-                </div>
-              </fieldset>
-            </div>
-          </div>
-          <!-- <div class="bar-content__rule">
-            <p class="bar-content__rule-text">
-              Of the 5 major leagues in europe guess who is the soccer player by
-              giving only a blur photo, don't worry if you don't do it on the
-              first try for every try if the player you thought was not the one
-              we are looking for but they have something in common, the aspect
-              that they share will come out in green, you have a limit of
-              opportunities, do not waste them.
-            </p>
-          </div> -->
-
-          <!-- <div class="bar-content__stats">
-            <div class="bar-content__stats--1">
-              <h3>Attempts</h3>
-              <span>1</span>
-            </div>
-            <div class="bar-content__stats--2">
-              <h3>Attempts</h3>
-              <span>1</span>
-            </div>
-            <div class="bar-content__stats--3">
-              <h3>Attempts</h3>
-              <span>1</span>
-            </div>
-            <div class="bar-content__stats--4">
-              <h3>Attempts</h3>
-              <span>1</span>
-            </div>
-          </div> -->
-        </div>
+        <div class="bar-content"></div>
         <div class="content">
           <h1 class="header__text">Guess who player is it?</h1>
 
-          <div class="guess-player">
-            <!-- <div class="guess-player__img"></div> -->
-          </div>
+          <div class="guess-player"></div>
           <div class="player-card">
             <div class="player-card__label">
               <span class="player-card__label--text">Country</span>
@@ -179,40 +78,14 @@
                 </svg>
               </button>
             </div>
-            <ul class="search-result">
-              <!-- <li class="search-result__item">
-                <span class="search-result__name">Crustasd</span>
-                <span class="search-result__team"></span>
-              </li> -->
-            </ul>
+            <ul class="search-result"></ul>
           </form>
 
           <div class="guess-player__guesses">
             <h2 class="guess-player__guesses--label">
               &dArr; Your Guesses &dArr;
             </h2>
-            <div class="guess-player__guesses-box">
-              <!-- <div class="player-card">
-              <h2 class="player-card__name">Sd.cacascsac</h2>
-              <div class="player-card__stat">
-                <div class="player-card__stat--box">
-                  <span class="nat"></span>
-                </div>
-                <div class="player-card__stat--box">
-                  <span class="league"></span>
-                </div>
-                <div class="player-card__stat--box">
-                  <span class="team"></span>
-                </div>
-                <div class="player-card__stat--box">
-                  <span class="position">GK</span>
-                </div>
-                <div class="player-card__stat--box">
-                  <span class="age">38</span>
-                </div>
-              </div>
-            </div> -->
-            </div>
+            <div class="guess-player__guesses-box"></div>
           </div>
         </div>
       </main>
