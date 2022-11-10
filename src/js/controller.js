@@ -36,12 +36,12 @@ const controlAddPlayerCard = function (id) {
   changePlaceHolder(module.state.game.guesses);
   // check for win
   if (module.checkForWinOrLose()) {
-    playerToFindImgView.removeTotalBlur();
+    playerToFindImgView.removeTotalBlur("Win");
     searchView.hiddenInputBox();
   }
   // check for lose
   if (module.state.game.guesses >= numberOfGuesses) {
-    playerToFindImgView.removeTotalBlur();
+    playerToFindImgView.removeTotalBlur("Lose");
     searchView.hiddenInputBox();
   }
 };

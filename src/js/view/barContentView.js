@@ -4,15 +4,18 @@ import { getPos } from "../utility.js";
 class barContentView extends View {
   _parentElement = document.querySelector(".bar-content");
   _barLinks = document.querySelector(".bar");
-  _rendered = false;
+  _rendered = true;
+  _tab = "";
 
   _message = "";
 
   render(data, link) {
     this._data = data;
-    this._rendered = this._rendered ? false : true;
+    console.log(this._tab);
+    console.log(this._rendered);
 
     let markup = "";
+
     if (link === "stats") {
       markup = this._renderStats();
     }
@@ -22,6 +25,13 @@ class barContentView extends View {
     if (link === "config") {
       markup = this._renderConfig();
     }
+
+    // if the click is deferent from actual tab close the tab
+    if (this._tab === link) {
+      this._rendered = this._rendered ? false : true;
+    } else this._rendered = true;
+    // change actual click after render
+    this._tab = link;
 
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);

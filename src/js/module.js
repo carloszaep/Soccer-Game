@@ -63,6 +63,7 @@ export const getPlayersForSearch = function (value) {
     if (
       (checkForPlayerInput(player.name, value) ||
         checkForPlayerInput(player.firstname, value) ||
+        checkForPlayerInput(player.team, value) ||
         checkForPlayerInput(player.lastname, value)) &&
       matchingPlayer.length < numberOfSearch
     ) {

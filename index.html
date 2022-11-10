@@ -27,7 +27,7 @@
             </li>
             <li class="nav__item">
               <a href="# " class="nav__link">
-                <button class="nav__btn">new game</button>
+                <button class="nav__btn" tabindex="2">new game</button>
               </a>
             </li>
           </ul>
@@ -52,7 +52,8 @@
           <h1 class="header__text">Guess who player is it?</h1>
 
           <div class="guess-player"></div>
-          <div class="player-card">
+
+          <div class="player-card player-toFind__card">
             <div class="player-card__label">
               <span class="player-card__label--text">Country</span>
               <span class="player-card__label--text">League</span>
@@ -65,10 +66,12 @@
           <form action="" class="search">
             <div class="search-input__box">
               <input
+                tabindex="1"
                 type="text"
                 class="search-input"
                 id="search-input"
                 placeholder="guesses 1-10"
+                autocomplete="off"
               />
               <button class="search__button">
                 <svg class="search__icon">
@@ -91,8 +94,10 @@
       </main>
       <footer class="footer">
         <div class="legal">
-          &copy <span class="leagl__year">2022</span> By
-          <a href="#" class="legal__link">Carlos Paez</a>
+          &copy <span class="leagl__year"></span> By
+          <a href="https://www.linkedin.com/in/carloszaep" class="legal__link"
+            >Carlos Paez</a
+          >
         </div>
       </footer>
     </div>

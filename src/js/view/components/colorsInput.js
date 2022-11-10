@@ -8,7 +8,7 @@ export const changeRootColor = function (color) {
     root.style.setProperty("--color-primary", "#4649FF");
   }
   if (color === "purple-color") {
-    root.style.setProperty("--color-primary", "#31087b");
+    root.style.setProperty("--color-primary", "#5d23c9");
   }
 };
 
@@ -23,7 +23,6 @@ export const changeRootModeColors = function (color) {
     root.style.setProperty("--color-grey-dark-3", "#999");
   }
   if (color === "dark-mode") {
-    root.style.setProperty("--color-primary", "#5d23c9");
     root.style.setProperty("--color-grey-light-1", "#151515");
     root.style.setProperty("--color-grey-light-2", "#301B3F");
     root.style.setProperty("--color-grey-light-3", "#B4A5A5");
