@@ -88,6 +88,9 @@ const init = function () {
     controlRestart();
   }
 
+  // color
+  controlColorChange(module.state.localUserGameData.color);
+  controlModeChange(module.state.localUserGameData.mode);
   // legal year
   controlLegalYear();
 };

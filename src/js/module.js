@@ -108,21 +108,24 @@ export const changeColors = function (color) {
   if (color === "purple-color") {
     state.localUserGameData.colorPurple = true;
   }
+  state.localUserGameData.color = color;
+
   localStorageData(state.localUserGameData, "localUserGameData");
 };
-export const changeMode = function (color) {
+export const changeMode = function (mode) {
   state.localUserGameData.modeNormal = false;
   state.localUserGameData.modeBlack = false;
   state.localUserGameData.modeDark = false;
-  if (color === "normal-mode") {
+  if (mode === "normal-mode") {
     state.localUserGameData.modeNormal = true;
   }
-  if (color === "dark-mode") {
+  if (mode === "dark-mode") {
     state.localUserGameData.modeDark = true;
   }
-  if (color === "black-mode") {
+  if (mode === "black-mode") {
     state.localUserGameData.modeBlack = true;
   }
+  state.localUserGameData.mode = mode;
   localStorageData(state.localUserGameData, "localUserGameData");
 };
 
