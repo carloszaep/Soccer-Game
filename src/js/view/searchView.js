@@ -16,6 +16,11 @@ class searchView extends View {
     inputBox.classList.toggle("hidden");
   }
 
+  _eventsToGetInput() {
+    const value = this._inputSearch.value.toLowerCase();
+    window.addEventListener("keyup");
+  }
+
   handlerEventInput(handler) {
     this._inputSearch.addEventListener("input", function () {
       const value = this.value.toLowerCase();
