@@ -35,7 +35,7 @@ export const changeRootModeColors = function (color) {
     root.style.setProperty("--color-grey-light-1", "#000000");
     root.style.setProperty("--color-grey-light-2", "#181818");
     root.style.setProperty("--color-grey-light-3", "#100720");
-    root.style.setProperty("--color-grey-light-4", "#100F0F");
+    root.style.setProperty("--color-grey-light-4", "#181818");
     root.style.setProperty("--color-grey-dark-1", "#040303");
     root.style.setProperty("--color-grey-dark-2", "#faf9f9");
     root.style.setProperty("--color-grey-dark-3", "#343434");
