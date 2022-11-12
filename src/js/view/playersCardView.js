@@ -4,6 +4,7 @@ import { getPos } from "../utility.js";
 class playerCard extends View {
   _parentElement = document.querySelector(".guess-player__guesses-box");
   _searchForm = document.querySelector(".search-result");
+  _inputSearch = document.querySelector(".search-input");
 
   _message = "";
 
@@ -13,6 +14,20 @@ class playerCard extends View {
       if (!itemResult) return;
       const id = +itemResult.dataset.id;
       handler(id);
+    });
+  }
+
+  handlerEventUpDown(handler) {
+    this._inputSearch.addEventListener("keyup", function (e) {
+      const itemResults = document.querySelectorAll(".search-result__item");
+      if (itemResults.length === 0) return;
+      let key = "";
+
+      if (e.key === "ArrowDown") key = "ArrowDown";
+      if (e.key === "ArrowUp") key = "ArrowUp";
+      if (e.key === "Enter") key = "Enter";
+
+      handler(key, itemResults);
     });
   }
 

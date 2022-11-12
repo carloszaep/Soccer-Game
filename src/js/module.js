@@ -9,7 +9,7 @@ import dataFavoritesPlayers from "../data/favoritesPlayers.json";
 
 export const state = {
   players: {},
-  game: { guessedPlayer: [], guesses: 1, playerToFind: {} },
+  game: { guessedPlayer: [], guesses: 1, playerToFind: {}, easy: true },
   favoritesPlayers: [],
   localUserGameData: {
     attempts: 1,
@@ -176,13 +176,21 @@ export const restartGame = function () {
 };
 
 export const getRandomPlayerToFind = function () {
-  // get a random index from favorites player
-  const randomIndex = randomNumber(0, state.favoritesPlayers.length - 1);
-  // get player to find  from ids favorites plyers
-  const randomPlayerID = state.favoritesPlayers[randomIndex];
+  if (state.game.easy) {
+    // get a random index from favorites player
+    const randomIndex = randomNumber(0, state.favoritesPlayers.length - 1);
+    // get player to find  from ids favorites plyers
+    const randomPlayerID = state.favoritesPlayers[randomIndex];
 
-  // set player to find by same name
-  state.game.playerToFind = state.players.find((p) => p.id === randomPlayerID);
+    // set player to find by same name
+    state.game.playerToFind = state.players.find(
+      (p) => p.id === randomPlayerID
+    );
+  } else {
+    const randomIndex = randomNumber(0, state.players.length - 1);
+    state.game.playerToFind = state.players[randomIndex];
+  }
 
+  state.game.easy = state.game.easy ? false : true;
   localStorageData(state.game, "game");
 };

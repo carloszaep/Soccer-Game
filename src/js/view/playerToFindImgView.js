@@ -1,4 +1,5 @@
 import View from "./view.js";
+import { numberOfGuesses } from "../config.js";
 
 class playerToFindImgView extends View {
   _parentElement = document.querySelector(".guess-player");
@@ -23,9 +24,11 @@ class playerToFindImgView extends View {
   }
 
   _generateMarkup() {
-    return ` <div class="guess-player__img" style="background-image: url(${this._data.photo})">
+    return ` <div class="guess-player__img" style="background-image: url(${
+      this._data.playerToFind.photo
+    }) ; filter: blur(${numberOfGuesses + 1 - this._data.guesses}px)">
     </div>
-    <div class="guess-player__name hidden">${this._data.name}</div>
+    <div class="guess-player__name hidden">${this._data.playerToFind.name}</div>
     <div class="showResult hidden"></div>
 
     

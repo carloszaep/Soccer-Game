@@ -11,8 +11,6 @@ class barContentView extends View {
 
   render(data, link) {
     this._data = data;
-    console.log(this._tab);
-    console.log(this._rendered);
 
     let markup = "";
 
@@ -86,7 +84,7 @@ class barContentView extends View {
     <h2 class="bar-content__text">Rule</h2>
     <div class="bar-content__rule">
     <p class="bar-content__rule-text">
-      Of the 5 major leagues in europe guess who is the soccer player by
+      Of the top 5 leagues in soccer guess who is the soccer player by
       giving only a blur photo, don't worry if you don't do it on the
       first try, for every try if the player you thought have something in common, the aspect
       that they share will come out in <span class="bar-content__rule-green">green</span>, you have a limit of
@@ -111,7 +109,7 @@ class barContentView extends View {
                     ${this._data.modeNormal ? "checked" : ""}
                    
                   />
-                  <label for="normal-mode">Normal</label>
+                  <label for="normal-mode">Light</label>
                 </div>
                 <div>
                   <input

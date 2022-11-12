@@ -70,30 +70,38 @@
   display: flex;
 
   flex-direction: row;
-  justify-content: space-evenly;
 
-  align-items: center;
   font-size: 1.4rem;
 
   &__item {
+    flex: 0 0 33.33333%;
     padding: 2rem;
     font-size: 1.7rem;
     text-transform: uppercase;
-  }
-
-  &__link {
-    &:visited,
-    &:link {
-      text-decoration: none;
-      color: var(--color-grey-dark-2);
-    }
-
     &:hover {
       background-color: var(--color-primary);
     }
 
     &:focus {
       outline: 1px solid var(--color-primary);
+    }
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+
+    fill: var(--color-grey-dark-2);
+    margin-right: 1rem;
+  }
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:visited,
+    &:link {
+      text-decoration: none;
+      color: var(--color-grey-dark-2);
     }
   }
 }
@@ -117,7 +125,7 @@
 
   &__rule {
     text-align: left;
-    line-height: 3.5rem;
+    line-height: 5rem;
 
     &-green {
       padding: 1rem;
@@ -153,6 +161,8 @@ input[type="radio"] {
   border: 3px solid var(--color-grey-dark-2);
   border-radius: 50%;
 
+  margin-bottom: -0.3rem;
+
   &:checked {
     background-color: var(--color-primary);
   }
@@ -172,7 +182,7 @@ input[type="radio"] {
   .header__text {
     font-size: 3rem;
     color: var(--color-primary);
-    padding: 3rem;
+    padding: 1rem;
     text-transform: uppercase;
   }
 }
@@ -189,8 +199,7 @@ input[type="radio"] {
     width: 15rem;
     height: 15rem;
     border-radius: 5px;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
+
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;

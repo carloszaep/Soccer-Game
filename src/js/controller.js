@@ -7,19 +7,67 @@ import { changePlaceHolder } from "./view/components/inputElement";
 import { handlerEventBtn } from "./view/components/restartBtn";
 import { numberOfGuesses } from "./config";
 import {
+  removeAndPutBorders,
+  upDownOptions,
+  auxiliaryRestartValue,
+  selectingId,
+} from "./utility";
+import {
   changeRootColor,
   changeRootModeColors,
 } from "./view/components/colorsInput";
 import { async } from "regenerator-runtime";
 
-// document.querySelector("#search-input").addEventListener("input", function (e) {
-//   console.log(e);
-// });
-
 const controlSearchShowResult = function (value) {
   const players = module.getPlayersForSearch(value);
   searchView.render(players);
   if (!value) searchView.clearInput();
+};
+
+const controlAddPlayerCardWithUpDown = function (key, items) {
+  /**
+   * render border to see what element is select and renter player by id
+   * @key {string | "keyPress"} get the key that is press
+   * @items {Object => []}
+   * @return {none} none
+   */
+
+  const lastItem = items.length - 1;
+  if (key === "ArrowDown") {
+    if (upDownOptions.lastClick === "ArrowUp") {
+      upDownOptions.itemSelect += 2;
+      upDownOptions.itemSelect =
+        upDownOptions.itemSelect > lastItem ? 1 : upDownOptions.itemSelect;
+    }
+    removeAndPutBorders(items, upDownOptions.itemSelect);
+    selectingId(items, true);
+  }
+
+  if (key === "ArrowUp") {
+    if (upDownOptions.lastClick === "ArrowDown") {
+      upDownOptions.itemSelect -= 2;
+      upDownOptions.itemSelect =
+        upDownOptions.itemSelect < 0 ? lastItem - 1 : upDownOptions.itemSelect;
+    }
+    // remove all borders
+    removeAndPutBorders(items, upDownOptions.itemSelect);
+    selectingId(items, false);
+  }
+
+  if (key === "Enter") {
+    // -1 because is a array
+    if (items.length === 1) {
+      controlAddPlayerCard(+items[0].dataset.id);
+      auxiliaryRestartValue();
+      return;
+    }
+    controlAddPlayerCard(upDownOptions.id);
+    auxiliaryRestartValue();
+  }
+
+  if (key !== "Enter" && key !== "ArrowUp" && key !== "ArrowDown") {
+    auxiliaryRestartValue();
+  }
 };
 
 const controlAddPlayerCard = function (id) {
@@ -82,7 +130,9 @@ const init = function () {
   handlerEventBtn(controlRestart);
   searchView.handlerEventInput(controlSearchShowResult);
   playersCard.handlerEventClick(controlAddPlayerCard);
+  playersCard.handlerEventUpDown(controlAddPlayerCardWithUpDown);
   barContentView.handlerEventClick(controlBarItem);
+
   // get random plyer if there is not
   if (Object.keys(module.state.game.playerToFind).length === 0) {
     controlRestart();
@@ -96,7 +146,7 @@ const init = function () {
 };
 
 const initGame = function () {
-  playerToFindImgView.render(module.state.game.playerToFind);
+  playerToFindImgView.render(module.state.game);
   playersCard.render(module.state.game.guessedPlayer);
   changePlaceHolder(module.state.game.guesses);
 };
