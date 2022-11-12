@@ -78,6 +78,9 @@
     padding: 2rem;
     font-size: 1.7rem;
     text-transform: uppercase;
+    @include respond(phone) {
+      padding: 1.5rem;
+    }
     &:hover {
       background-color: var(--color-primary);
     }
@@ -90,9 +93,13 @@
   &__icon {
     width: 4rem;
     height: 4rem;
-
     fill: var(--color-grey-dark-2);
     margin-right: 1rem;
+
+    @include respond(phone) {
+      width: 2rem;
+      height: 2rem;
+    }
   }
   &__link {
     display: flex;
