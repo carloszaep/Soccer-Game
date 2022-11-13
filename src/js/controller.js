@@ -6,12 +6,7 @@ import barContentView from "./view/barContentView";
 import { changePlaceHolder } from "./view/components/inputElement";
 import { handlerEventBtn } from "./view/components/restartBtn";
 import { numberOfGuesses } from "./config";
-import {
-  removeAndPutBorders,
-  upDownOptions,
-  auxiliaryRestartValue,
-  selectingId,
-} from "./utility";
+import { removeAndPutBorders } from "./utility";
 import {
   changeRootColor,
   changeRootModeColors,
@@ -22,6 +17,31 @@ const controlSearchShowResult = function (value) {
   const players = module.getPlayersForSearch(value);
   searchView.render(players);
   if (!value) searchView.clearInput();
+};
+
+const upDownOptions = { itemSelect: 0, id: "", lastClick: "" };
+const auxiliaryRestartValue = function () {
+  upDownOptions.itemSelect = 0;
+  upDownOptions.id = "";
+  upDownOptions.lastClick = "";
+};
+
+const selectingId = function (items, down = true) {
+  const lastItem = items.length - 1;
+  upDownOptions.id = +items[upDownOptions.itemSelect].dataset.id;
+
+  upDownOptions.itemSelect = down
+    ? (upDownOptions.itemSelect += 1)
+    : (upDownOptions.itemSelect -= 1);
+  if (down) {
+    upDownOptions.itemSelect =
+      upDownOptions.itemSelect > lastItem ? 0 : upDownOptions.itemSelect;
+    upDownOptions.lastClick = "ArrowDown";
+  } else {
+    upDownOptions.itemSelect =
+      upDownOptions.itemSelect < 0 ? lastItem : upDownOptions.itemSelect;
+    upDownOptions.lastClick = "ArrowUp";
+  }
 };
 
 const controlAddPlayerCardWithUpDown = function (key, items) {
