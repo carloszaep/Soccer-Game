@@ -37,7 +37,8 @@ class playerCard extends View {
       .reverse()
       .map((player) => {
         const backgroundColor = `style='background-color: var(--color-green)'`;
-        const countryCode = country[player.playerGuessed.country];
+        let countryCode = country[player.playerGuessed.country];
+        if (!countryCode) countryCode = player.playerGuessed.country;
 
         return `
         <div class="player-card">
@@ -47,7 +48,9 @@ class playerCard extends View {
           <div class="player-card__stat--box" ${
             player.areTheSame.country ? backgroundColor : ""
           }>
-          <img class="nat" src="https://flagicons.lipis.dev/flags/1x1/${countryCode.toLowerCase()}.svg" alt="">
+          <img class="nat" src="https://flagicons.lipis.dev/flags/1x1/${countryCode.toLowerCase()}.svg" alt=${
+          player.playerGuessed.country
+        }>
             
           </div>
           <div class="player-card__stat--box" ${
