@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "core-js": "^3.25.3",
+    "countries-list": "^2.6.1",
+    "iso-3166-2": "^1.0.0",
     "regenerator-runtime": "^0.13.9"
   }
 }

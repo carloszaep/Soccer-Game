@@ -1,5 +1,6 @@
 import View from "./view.js";
 import { getPos } from "../utility.js";
+import country from "../../data/countryCode.json";
 
 class playerCard extends View {
   _parentElement = document.querySelector(".guess-player__guesses-box");
@@ -36,17 +37,18 @@ class playerCard extends View {
       .reverse()
       .map((player) => {
         const backgroundColor = `style='background-color: var(--color-green)'`;
+        const countryCode = country[player.playerGuessed.country];
+
         return `
-      <div class="player-card">
+        <div class="player-card">
         <h2 class="player-card__name">${player.playerGuessed.name}</h2>
         <div class="player-card__stat">
 
           <div class="player-card__stat--box" ${
             player.areTheSame.country ? backgroundColor : ""
           }>
-            <span class="nat" style="background-image: url(${
-              player.playerGuessed.countryFlag
-            })"></span>
+          <img class="nat" src="https://flagicons.lipis.dev/flags/1x1/${countryCode.toLowerCase()}.svg" alt="">
+            
           </div>
           <div class="player-card__stat--box" ${
             player.areTheSame.league ? backgroundColor : ""

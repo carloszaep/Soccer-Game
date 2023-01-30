@@ -150,7 +150,8 @@ const init = function () {
   handlerEventBtn(controlRestart);
   searchView.handlerEventInput(controlSearchShowResult);
   playersCard.handlerEventClick(controlAddPlayerCard);
-  playersCard.handlerEventUpDown(controlAddPlayerCardWithUpDown);
+  // for now had to remove the up and down function
+  // playersCard.handlerEventUpDown(controlAddPlayerCardWithUpDown);
   barContentView.handlerEventClick(controlBarItem);
 
   // get random plyer if there is not
@@ -161,8 +162,9 @@ const init = function () {
   // color
   controlColorChange(module.state.localUserGameData.color);
   controlModeChange(module.state.localUserGameData.mode);
-  // legal year
-  controlLegalYear();
+  // legal year (no for now)
+
+  // controlLegalYear();
 };
 
 const initGame = function () {
