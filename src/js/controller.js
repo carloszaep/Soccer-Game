@@ -164,7 +164,7 @@ const init = function () {
   controlModeChange(module.state.localUserGameData.mode);
   // legal year (no for now)
 
-  // controlLegalYear();
+  controlLegalYear();
 };
 
 const initGame = function () {
