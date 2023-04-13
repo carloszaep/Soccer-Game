@@ -24,5 +24,4 @@ parcel: a fast, zero-configuration web application bundler.
 Contributing
 If you'd like to contribute to Soccer Game, please open an issue or submit a pull request on the GitHub repository.
 
-License
-Soccer Game is licensed under the ISC License. See LICENSE.md for details.
+
