@@ -2,7 +2,34 @@
 body {
   font-family: "Secular One", sans-serif;
   background-color: #31087b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 43%;
+  }
+}
+
 /* player to guess */
 
 .looking-Player,
@@ -26,7 +53,7 @@ body {
 .looking-img {
   width: 150px;
   height: 150px;
-  background-image: url("https://media.api-sports.io/football/players/874.png");
+  /* background-image: url("https://media.api-sports.io/football/players/874.png"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,7 +65,7 @@ body {
 }
 /* input filed */
 .input-guess {
-  width: 30%;
+  min-width: 20rem;
   padding: 10px;
   border-radius: 10px;
   border: none;
@@ -57,9 +84,9 @@ body {
   border-bottom: 1px solid black;
 }
 .search-team {
-  width: 30px;
-  height: 30px;
-  background-image: url("https://media.api-sports.io/football/teams/530.png");
+  width: 3rem;
+  height: 3rem;
+  /* background-image: url("https://media.api-sports.io/football/teams/530.png"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,7 +97,7 @@ body {
 }
 
 .blur {
-  -webkit-filter: blur(10px);
+  -webkit-filter: blur(1rem);
   filter: blur(6px);
 }
 
@@ -78,13 +105,21 @@ body {
 
 .player {
   color: rgb(42, 42, 42);
-  width: 1000px;
+  width: 100rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: minmax(150px, auto);
+  grid-auto-rows: minmax(15rem, auto);
   background-color: aliceblue;
   margin: 2px auto;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .player {
+    width: 48rem;
+  }
+  #player-toFind {
+  }
 }
 
 #player-toFind {
@@ -102,6 +137,23 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: moveToRight 1s ease-out;
+}
+
+@keyframes moveToRight {
+  0% {
+    opacity: 0;
+    transform: translate(-100px);
+  }
+
+  80% {
+    transform: translate(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 /* logos */
@@ -111,8 +163,8 @@ body {
 .league-logo,
 .age-logo,
 .pos-logo {
-  width: 80px;
-  height: 80px;
+  width: 8rem;
+  height: 8rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -123,19 +175,19 @@ body {
 
 .country-flag {
   /* background-image: url("https://countryflagsapi.com/png/England"); */
-  background-size: 129px;
+  background-size: 12.9rem;
 }
-.player-img {
-  /* background-image: url("https://media.api-sports.io/football/players/30.png"); */
-}
+/* .player-img {
+  background-image: url("https://media.api-sports.io/football/players/30.png");
+} */
 .team-logo {
   /* background-image: url("https://media.api-sports.io/football/teams/530.png"); */
-  background-size: 70px;
+  background-size: 7rem;
 }
 
 .league-logo {
   /* background-image: url("https://media.api-sports.io/football/leagues/140.png"); */
-  background-size: 70px;
+  background-size: 7rem;
 }
 
 .age-logo,

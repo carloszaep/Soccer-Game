@@ -1,0 +1,15 @@
+.hidden {
+  display: none;
+}
+
+.visibleContent {
+  padding: 2rem;
+  visibility: visible;
+  opacity: 1;
+}
+
+.noVisibleContent {
+  padding: 0;
+  visibility: hidden;
+  opacity: 0;
+}

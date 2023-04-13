@@ -3,77 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script defer type="module" src="script.js"></script>
-    <title>Soccer</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <script type="module" src="src/js/controller.js"></script>
+    <link rel="icon" href="src/img/futbol-o.svg" />
+    <title>Guess Soccer Game</title>
   </head>
   <body>
-    <div class="looking-Player">
-      <div class="looking-info">
-        <div class="looking-img blur"></div>
-        <h2 class="looking-name"></h2>
+    <div class="app container">
+      <header class="header">
+        <nav class="navigation">
+          <ul class="nav">
+            <li class="nav__item">
+              <a href="# " class="nav__link">
+                <svg class="nav__icon">
+                  <use xlink:href="src/img/app-svg.svg#icon-futbol-o"></use>
+                </svg>
+                <span class="nav__title">Soccer Guess Game</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="# " class="nav__link">
+                <button class="nav__btn" tabindex="2">new game</button>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <!-- player card -->
-        <div class="player" id="player-toFind">
-          <div class="player-age">
-            <div class="age">Age</div>
-            <div class="age-logo incorrect" id="player-toFind-age"></div>
-          </div>
-          <div class="player-pos">
-            <div class="pos-text">Position</div>
-            <div class="pos-logo incorrect" id="player-toFind-pos"></div>
-          </div>
-          <div class="player-nationality">
-            <div class="country">Nationality</div>
-            <div class="incorrect country-flag" id="player-toFind-nat"></div>
-          </div>
-          <div class="player-team">
-            <div class="team-text">Team</div>
-            <div class="team-logo incorrect" id="player-toFind-team"></div>
-          </div>
-          <div class="player-league">
-            <div class="league-text">League</div>
-            <div class="league-logo incorrect" id="player-toFind-league"></div>
-          </div>
-        </div>
-      </div>
+      <main class="main">
+        <div class="side-bar">
+          <ul class="bar">
+            <li class="bar__item">
+              <a href="#" class="bar__link" data-link="stats">
+                <svg class="bar__icon">
+                  <use xlink:href="src/img/app-svg.svg#icon-line-chart"></use>
+                </svg>
 
-      <input class="input-guess" type="text" placeholder="GUESS 1-10" />
-      <div class="search-container">
-        <!-- <div class="search-card">
-          <span class="search-name">cararfdfdfdfs</span>
-          <div class="search-team"></div> -->
-      </div>
-    </div>
+                <span>Stats</span>
+              </a>
+            </li>
+            <li class="bar__item">
+              <a href="#" class="bar__link" data-link="rule">
+                <svg class="bar__icon">
+                  <use xlink:href="src/img/app-svg.svg#icon-rule"></use>
+                </svg>
+                <span>Rule</span>
+              </a>
+            </li>
+            <li class="bar__item">
+              <a href="#" class="bar__link" data-link="config">
+                <svg class="bar__icon">
+                  <use xlink:href="src/img/app-svg.svg#icon-settings"></use>
+                </svg>
+                <span>Config</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="bar-content"></div>
+        <div class="content">
+          <h1 class="header__text">Guess who player is it?</h1>
 
-    <div class="player-container">
-      <!-- <div class="player">
-        <div class="player-id">
-          <div class="player-name">S. Arias</div>
-          <div class="player-img incorrect"></div>
+          <div class="guess-player"></div>
+
+          <div class="player-card player-toFind__card">
+            <div class="player-card__label">
+              <span class="player-card__label--text">Country</span>
+              <span class="player-card__label--text">League</span>
+              <span class="player-card__label--text">Team</span>
+              <span class="player-card__label--text">Position</span>
+              <span class="player-card__label--text">Age</span>
+            </div>
+          </div>
+
+          <form action="" class="search">
+            <div class="search-input__box">
+              <input
+                tabindex="1"
+                type="text"
+                class="search-input"
+                id="search-input"
+                placeholder="guesses 1-10"
+                autocomplete="off"
+              />
+              <button class="search__button">
+                <svg class="search__icon">
+                  <use
+                    xlink:href="src/img/app-svg.svg#icon-magnifying-glass"
+                  ></use>
+                </svg>
+              </button>
+            </div>
+            <ul class="search-result"></ul>
+          </form>
+
+          <div class="guess-player__guesses">
+            <h2 class="guess-player__guesses--label">
+              &dArr; Your Guesses &dArr;
+            </h2>
+            <div class="guess-player__guesses-box"></div>
+          </div>
         </div>
-        <div class="player-age">
-          <div class="age">Age</div>
-          <div class="age-logo">30</div>
+      </main>
+      <footer class="footer">
+        <div class="legal">
+          &copy <span class="leagl__year">2022</span> By
+          <a href="https://www.linkedin.com/in/carloszaep" class="legal__link"
+            >Carlos Paez</a
+          >
         </div>
-        <div class="player-pos">
-          <div class="pos-text">Midfielder</div>
-          <div class="pos-logo">MD</div>
-        </div>
-        <div class="player-nationality">
-          <div class="country">Spain</div>
-          <div class="country-flag"></div>
-        </div>
-        <div class="player-team">
-          <div class="team-text">Team</div>
-          <div class="team-logo"></div>
-        </div>
-        <div class="player-league">
-          <div class="league-text">League</div>
-          <div class="league-logo incorrect"></div>
-        </div>
-      </div> -->
+      </footer>
     </div>
   </body>
 </html>
