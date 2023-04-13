@@ -1,4 +1,6 @@
 Soccer Game
+
+
 Soccer Game is a web game that challenges players to guess the identity of a soccer player based on a blurry image.
 
 Installation
