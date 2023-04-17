@@ -6,23 +6,23 @@ const wait = function (seconds) {
 
 const optionsAPI = {
   method: "GET",
-  headers: {
-
-  },
+  headers: {},
 };
 
 // only change the league number
 let optionToPlayer = { league: 61, season: 2022, page: 1 };
 
-const premier = { data: [] };
+const leagueData = { data: [] };
 
 const getPlayerData = async function () {
   const url = `https://api-football-v1.p.rapidapi.com/v3/players?league=${optionToPlayer.league}&season=${optionToPlayer.season}&page=${optionToPlayer.page}`;
   let res = await fetch(url, optionsAPI);
   let response = await res.json();
+
   for (let player of response.response) {
-    premier.data.push(player);
+    leagueData.data.push(player);
   }
+
   console.log(optionToPlayer.page);
   console.log(response.paging.total);
 
@@ -32,7 +32,7 @@ const getPlayerData = async function () {
   if (optionToPlayer.page !== response.paging.total) {
     getPlayerData();
   } else {
-    const myJSON = JSON.stringify(premier);
+    const myJSON = JSON.stringify(leagueData);
     console.log(myJSON);
   }
 };
