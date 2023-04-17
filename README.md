@@ -1,4 +1,9 @@
 Soccer Game
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5f8d941fe5ad4d5bb6b7d749e35f29697fc8ccea
 Soccer Game is a web game that challenges players to guess the identity of a soccer player based on a blurry image.
 
 Installation
@@ -22,5 +27,9 @@ parcel: a fast, zero-configuration web application bundler.
 Contributing
 If you'd like to contribute to Soccer Game, please open an issue or submit a pull request on the GitHub repository.
 
+<<<<<<< HEAD
 License
 Soccer Game is licensed under the ISC License. See LICENSE.md for details.
+=======
+
+>>>>>>> 5f8d941fe5ad4d5bb6b7d749e35f29697fc8ccea
