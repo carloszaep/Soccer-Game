@@ -1,3 +1,6 @@
+const fetch = require("node-fetch");
+const fs = require("fs");
+
 const wait = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, seconds * 1000);
@@ -6,35 +9,51 @@ const wait = function (seconds) {
 
 const optionsAPI = {
   method: "GET",
-  headers: {},
+  headers: {
+    "X-RapidAPI-Key": "your key",
+    "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+  },
 };
 
-// only change the league number
-let optionToPlayer = { league: 61, season: 2022, page: 1 };
+// only change the leagueID and leagueName for each league
+const playerLeagueAndYear = {
+  leagueID: 61,
+  season: 2022,
+  page: 1,
+  leagueName: "premierLeague",
+};
 
-const leagueData = { data: [] };
+const finalData = [];
 
 const getPlayerData = async function () {
-  const url = `https://api-football-v1.p.rapidapi.com/v3/players?league=${optionToPlayer.league}&season=${optionToPlayer.season}&page=${optionToPlayer.page}`;
-  let res = await fetch(url, optionsAPI);
-  let response = await res.json();
+  const { leagueName, leagueID, season, page } = playerLeagueAndYear;
+  const url = `https://api-football-v1.p.rapidapi.com/v3/players?league=${leagueID}&season=${season}&page=${page}`;
 
-  for (let player of response.response) {
-    leagueData.data.push(player);
+  const req = await fetch(url, optionsAPI);
+  const response = await req.json();
+
+  for (const player of response.response) {
+    finalData.push(player);
   }
 
-  console.log(optionToPlayer.page);
+  // see how mane page missing
+  console.log(playerLeagueAndYear.page);
   console.log(response.paging.total);
 
-  optionToPlayer.page = response.paging.current + 1;
+  // move to next page
+  playerLeagueAndYear.page++;
 
-  await wait(3);
-  if (optionToPlayer.page !== response.paging.total) {
+  // wait so no many petition for minutes
+  await wait(3.5);
+
+  //write the json file
+  const jsonData = JSON.stringify(finalData);
+  fs.writeFileSync(`${leagueName}.json`, jsonData);
+
+  // if no last recurring the function
+  if (playerLeagueAndYear.page !== response.paging.total) {
     getPlayerData();
-  } else {
-    const myJSON = JSON.stringify(leagueData);
-    console.log(myJSON);
   }
 };
 
-//getPlayerData();
+getPlayerData();
